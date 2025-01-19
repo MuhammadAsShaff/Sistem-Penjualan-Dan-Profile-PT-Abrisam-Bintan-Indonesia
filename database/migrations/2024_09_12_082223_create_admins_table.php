@@ -14,13 +14,13 @@ class CreateAdminsTable extends Migration
     public function up()
     {
         Schema::create('admins', function (Blueprint $table) {
-            $table->id(); // Primary key ID
-            $table->string('email_admin', 150)->unique(); // Email admin harus unik
+            $table->id(); 
+            $table->string('email_admin', 100)->unique(); 
             $table->string('nama_admin', 100);
-            $table->string('password');
+            $table->string('password', 100);
             $table->string('posisi', 100);
-            $table->string('foto_admin')->nullable();
-            $table->string('status')->default('Offline');
+            $table->string('foto_admin', 255)->nullable();
+            $table->string('status', 100)->default('Offline');
             $table->timestamps();
         });
     }
