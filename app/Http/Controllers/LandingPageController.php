@@ -95,7 +95,7 @@ class LandingPageController extends Controller
                 'pid' => $item->parent_id, // Parent ID (jika ada)
                 'name' => $item->name,     // Nama Node
                 'title' => $item->title,   // Jabatan Node
-                'img' => $item->img_url ? asset('uploads/bagan/' . $item->img_url) : null, // URL gambar
+                'img' => $item->img_url ? asset('uploads/bagan/' . $item->img_url) : null, 
             ];
         });
 

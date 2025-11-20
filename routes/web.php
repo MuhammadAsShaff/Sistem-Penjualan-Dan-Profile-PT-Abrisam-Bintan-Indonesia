@@ -31,47 +31,47 @@ use App\Http\Middleware\PreventBackHistory;
 Route::prefix('/')->group(function () {
     Route::get('/', [LandingPageController::class, 'index'])
         ->name('landingPage.layoutLandingPage');
-
     Route::get('kontak', [LandingPageController::class, 'tampilKontak'])
         ->name('tampilKontak');
-
-    Route::get('produk', [ProdukLandingPage::class, 'index'])
-        ->name('tampilProduk');
-
-    Route::get('/produk/filter', [ProdukLandingPage::class, 'filterByKategori'])->name('produk.filter');
-
-    Route::get('blog', [BlogLandingPage::class, 'index'])
-        ->name('tampilBlog');
-    Route::get('/blog/search', [BlogLandingPage::class, 'search'])->name('blog.search');
-
-    Route::get('/blog/{slug}', [BlogLandingPage::class, 'isiBlog'])->name('isiBlog');
-
     Route::get('TentangKami', [LandingPageController::class, 'tampilTentangKami'])
         ->name('tampilTentangKami');
-
     Route::get('FaQ', [LandingPageController::class, 'tampilFaQ'])
         ->name('tampilFaQ');
 
-    Route::post('produk/pilih', [PesanProdukController::class, 'pilihProduk'])->name('produk.pilih');
+    Route::get('/produk/filter', [ProdukLandingPage::class, 'filterByKategori'])
+    ->name('produk.filter');
+    Route::get('produk', [ProdukLandingPage::class, 'index'])
+        ->name('tampilProduk');
 
-    Route::post('showLocation', [PesanProdukController::class, 'showLocation'])->name('showLocation');
+    Route::get('blog', [BlogLandingPage::class, 'index'])
+        ->name('tampilBlog');
+    Route::get('/blog/search', [BlogLandingPage::class, 'search'])
+    ->name('blog.search');
+    Route::get('/blog/{slug}', [BlogLandingPage::class, 'isiBlog'])
+    ->name('isiBlog');
+
+    Route::get('/send-otp', [OTPController::class, 'sendOTP'])
+    ->name('sendOTP');
+    Route::post('simpanDataDiri', [OTPController::class, 'simpanDataDiri'])
+    ->name('simpanDataDiri');
+    Route::post('simpanDataPemesanan', [OTPController::class, 'simpanDataPemesanan'])
+    ->name('simpanDataPemesanan');
+
+
+    Route::post('produk/pilih', [PesanProdukController::class, 'pilihProduk'])
+    ->name('produk.pilih');
+    Route::post('showLocation', [PesanProdukController::class, 'showLocation'])
+    ->name('showLocation');
     // Menambahkan route untuk halaman pesan produk
-    Route::get('pesanProduk', [PesanProdukController::class, 'pesanProduk'])->name('pesanProduk');
-
+    Route::get('pesanProduk', [PesanProdukController::class, 'pesanProduk'])
+    ->name('pesanProduk');
     Route::post('/save-location-session', [PesanProdukController::class, 'saveLocationSession']);
-
-    Route::get('isiDataDiri', [PesanProdukController::class, 'isiDataDiri'])->name('isiDataDiri');
-
-    Route::post('simpanAlamat', [PesanProdukController::class, 'simpanAlamat'])->name('simpanAlamat');
-
-    Route::post('simpanDataDiri', [OTPController::class, 'simpanDataDiri'])->name('simpanDataDiri');
-
-    Route::get('verifikasiOTP', [PesanProdukController::class, 'verifikasiOTP'])->name('verifikasiOTP');
-
-    Route::post('simpanDataPemesanan', [OTPController::class, 'simpanDataPemesanan'])->name('simpanDataPemesanan');
-
-    Route::get('/send-otp', [OTPController::class, 'sendOTP'])->name('sendOTP');
-
+    Route::get('isiDataDiri', [PesanProdukController::class, 'isiDataDiri'])
+    ->name('isiDataDiri');
+    Route::post('simpanAlamat', [PesanProdukController::class, 'simpanAlamat'])
+    ->name('simpanAlamat');
+    Route::get('verifikasiOTP', [PesanProdukController::class, 'verifikasiOTP'])
+    ->name('verifikasiOTP');
     Route::get('selesai', [PesanProdukController::class, 'selesai'])->name('selesai');
 });
 
@@ -80,7 +80,7 @@ Route::prefix('/')->group(function () {
 Route::prefix('admin')->group(function () {
     Route::match(['get', 'post'], 'login', [LoginController::class, 'login'])
         ->name('admin.login')
-        ->middleware(PreventBackHistory::class); // Middleware untuk mencegah kembali ke halaman login jika sudah login
+        ->middleware(PreventBackHistory::class); 
 
     Route::post('logout', [LoginController::class, 'logout'])
         ->name('admin.logout')
@@ -88,11 +88,16 @@ Route::prefix('admin')->group(function () {
 });
 
 // Route untuk reset password
-Route::get('forgot-password', [ResetPasswordController::class, 'showLinkRequestForm'])->name('password.request');
-Route::post('forgot-password', [ResetPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
-Route::get('reset-password/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
-Route::post('reset-password', [ResetPasswordController::class, 'reset'])->name('password.update');
-Route::get('reset-password-success', [ResetPasswordController::class, 'showSuccessPage'])->name('password.success');
+Route::get('forgot-password', [ResetPasswordController::class, 'showLinkRequestForm'])
+->name('password.request');
+Route::post('forgot-password', [ResetPasswordController::class, 'sendResetLinkEmail'])
+->name('password.email');
+Route::get('reset-password/{token}', [ResetPasswordController::class, 'showResetForm'])
+->name('password.reset');
+Route::post('reset-password', [ResetPasswordController::class, 'reset'])
+->name('password.update');
+Route::get('reset-password-success', [ResetPasswordController::class, 'showSuccessPage'])
+->name('password.success');
 
 
 // Route untuk dashboard admin (dilindungi oleh middleware auth:admin)
@@ -162,9 +167,12 @@ Route::prefix('dashboard')->middleware(['auth:admin', PreventBackHistory::class]
 
     //Route Kegiatan
     Route::prefix('tentang-kami/kegiatan')->group(function () {
-        Route::post('/store', [KegiatanController::class, 'store'])->name('kegiatan.store');
-        Route::put('/update/{id}', [KegiatanController::class, 'update'])->name('kegiatan.update');
-        Route::delete('/delete/{id}', [KegiatanController::class, 'destroy'])->name('kegiatan.delete');
+        Route::post('/store', [KegiatanController::class, 'store'])
+        ->name('kegiatan.store');
+        Route::put('/update/{id}', [KegiatanController::class, 'update'])
+        ->name('kegiatan.update');
+        Route::delete('/delete/{id}', [KegiatanController::class, 'destroy'])
+        ->name('kegiatan.delete');
     });
 
 
@@ -195,8 +203,10 @@ Route::prefix('dashboard')->middleware(['auth:admin', PreventBackHistory::class]
             ->name('dashboard.dataKategori.dataKategori')
             ->middleware(SavePreviousUrl::class);
         Route::post('/store', [KategoriController::class, 'store'])->name('kategori.store');
-        Route::put('/update/{id_kategori}', [KategoriController::class, 'update'])->name('kategori.update');
-        Route::delete('/delete/{id_kategori}', [KategoriController::class, 'destroy'])->name('kategori.delete');
+        Route::put('/update/{id_kategori}', [KategoriController::class, 'update'])
+        ->name('kategori.update');
+        Route::delete('/delete/{id_kategori}', [KategoriController::class, 'destroy'])
+        ->name('kategori.delete');
         Route::get('/{id_kategori}', [KategoriController::class, 'showProdukByKategori'])
             ->name('kategori.showProdukByKategori');
     });

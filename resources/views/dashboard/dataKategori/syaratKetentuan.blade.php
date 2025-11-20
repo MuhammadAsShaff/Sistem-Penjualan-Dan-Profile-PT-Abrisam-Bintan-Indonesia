@@ -32,25 +32,35 @@
             </th>
           </tr>
         </thead>
-        <tbody class="bg-white divide-y divide-gray-200">
-          @php
-      // Cek apakah syarat_ketentuan masih berupa string JSON
+      <tbody class="bg-white divide-y divide-gray-200">
+        @php
+      // Pastikan syarat_ketentuan dalam format array
       $syaratKetentuan = is_string($kategori->syarat_ketentuan) ? json_decode($kategori->syarat_ketentuan, true) : $kategori->syarat_ketentuan;
-    @endphp
 
-          @if (isset($syaratKetentuan) && is_array($syaratKetentuan) && count($syaratKetentuan) > 0)
-        @foreach ($syaratKetentuan as $index => $syarat)
+      // Jika hasil json_decode() bukan array, set ke array kosong
+      if (!is_array($syaratKetentuan)) {
+        $syaratKetentuan = [];
+      }
+    @endphp
+      
+        @if (!empty($syaratKetentuan))
+      @foreach ($syaratKetentuan as $index => $syarat)
       <tr>
       <td class="px-4 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $index + 1 }}</td>
       <td class="px-4 py-4 whitespace-normal text-sm font-medium text-gray-900">
-        {{ $syarat }}
+      {{ $syarat }}
       </td>
-
       </tr>
     @endforeach
-      @endif
+    @else
+    <tr>
+      <td colspan="2" class="px-4 py-4 text-sm font-medium text-gray-500 text-center">
+      Tidak ada syarat dan ketentuan.
+      </td>
+    </tr>
+  @endif
+      </tbody>
 
-        </tbody>
       </table>
     </div>
   </div>

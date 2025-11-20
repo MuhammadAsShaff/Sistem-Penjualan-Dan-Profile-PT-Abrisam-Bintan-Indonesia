@@ -48,7 +48,7 @@ class KategoriController extends Controller
 
         // Data kategori yang akan disimpan
         $kategoriData = [
-            'nama_kategori' => $validated['nama_kategori'],
+            'nama_kategori' => $validated['nama_kategori'], 
             'deskripsi' => $validated['deskripsi'],
             'syarat_ketentuan' => $syaratKetentuanJson, // Simpan sebagai JSON
         ];

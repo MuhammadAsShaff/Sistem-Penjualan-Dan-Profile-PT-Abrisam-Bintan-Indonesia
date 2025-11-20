@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\Kategori;
-use Illuminate\Support\Facades\Auth; // Import Auth
+use Illuminate\Support\Facades\Auth;
 use App\Models\Admin;
 use App\Models\Blog;
 use App\Models\Stock;
@@ -77,9 +77,10 @@ class Dashboard extends Controller
         'count' => $item->customer_count, // Jumlah customer
       ];
     });
-    
+
     // Kirim data ke view
-    return view('dashboard.dashboard.dashboard', compact('admin', 'totalInventoryMasuk', 'totalInventoryKeluar', 'blogCount', 'onlineCount', 'customerCountThisMonth', 'customers', 'produks','dataCustomer','inventoryMasukData', 'inventoryKeluarData','kategoriDataChart'));
+    return view('dashboard.dashboard.dashboard', compact('admin', 'totalInventoryMasuk', 'totalInventoryKeluar', 'blogCount', 'onlineCount', 
+    'customerCountThisMonth', 'customers', 'produks', 'dataCustomer', 'inventoryMasukData', 'inventoryKeluarData', 'kategoriDataChart'));
   }
 
 

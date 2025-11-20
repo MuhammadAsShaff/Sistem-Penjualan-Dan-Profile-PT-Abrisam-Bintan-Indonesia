@@ -35,11 +35,13 @@ class InventoryCategorySheetExport implements FromCollection, WithHeadings, With
         if ($this->type === 'Masuk') {
             return Stock::whereNotNull('id_inventoryMasuk')
                 ->where('kategoriProduk', $this->category)
-                ->get(['kategoriProduk', 'nomorProduk', 'keterangan', 'updated_at']);
+                ->get(['kategoriProduk', 'nomorProduk', 'keterangan', 
+                'updated_at']);
         } elseif ($this->type === 'Keluar') {
             return Stock::whereNotNull('id_inventoryKeluar')
                 ->where('kategoriProduk', $this->category)
-                ->get(['kategoriProduk', 'nomorProduk', 'keterangan', 'updated_at']);
+                ->get(['kategoriProduk', 'nomorProduk', 'keterangan', 
+                'updated_at']);
         }
 
         // Jika tipe tidak valid, kembalikan koleksi kosong
@@ -48,7 +50,8 @@ class InventoryCategorySheetExport implements FromCollection, WithHeadings, With
 
     public function headings(): array
     {
-        return ['Nomor', 'Kategori Produk', 'Nomor Produk', 'Keterangan', 'Tanggal'];
+        return ['Nomor', 'Kategori Produk', 'Nomor Produk',
+         'Keterangan', 'Tanggal'];
     }
 
     public function map($row): array
@@ -58,14 +61,14 @@ class InventoryCategorySheetExport implements FromCollection, WithHeadings, With
             $row->kategoriProduk,
             $row->nomorProduk,
             $row->keterangan ?? '-',
-            date('d-m-Y', strtotime($row->updated_at)), // Format tanggal
+            date('d-m-Y', strtotime($row->updated_at)), 
         ];
     }
 
     public function columnFormats(): array
     {
         return [
-            'E' => NumberFormat::FORMAT_DATE_DDMMYYYY, // Format tanggal untuk kolom E
+            'E' => NumberFormat::FORMAT_DATE_DDMMYYYY, 
         ];
     }
 
@@ -124,7 +127,7 @@ class InventoryCategorySheetExport implements FromCollection, WithHeadings, With
                 $sheet->setCellValue('A' . $lastRow, 'Total Produk:'); // Tulis "Total Produk:"
                 $sheet->setCellValue('D' . $lastRow, $totalRows); // Tulis nilai total di kolom D
                 $sheet->mergeCells('D' . $lastRow . ':E' . $lastRow); // Gabungkan kolom D sampai E
-                $sheet->getStyle('A' . $lastRow . ':E' . $lastRow)->getFont()->setBold(true); // Bold untuk seluruh baris
+                $sheet->getStyle('A' . $lastRow . ':E' . $lastRow)->getFont()->setBold(true); 
             },
         ];
     }

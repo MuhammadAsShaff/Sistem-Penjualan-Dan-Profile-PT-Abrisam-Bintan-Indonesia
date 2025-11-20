@@ -22,16 +22,14 @@ class Produk extends Model
     ];
 
     protected $casts = [
-        'benefit' => 'string', // Ubah ke string
+        'benefit' => 'string', 
     ];
 
-    // Relasi ke model Kategori
     public function kategori()
     {
         return $this->belongsTo(Kategori::class, 'id_kategori');
     }
 
-    // Relasi ke model Paket
     public function paket()
     {
         return $this->belongsTo(Paket::class, 'id_paket');

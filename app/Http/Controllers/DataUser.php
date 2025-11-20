@@ -3,14 +3,12 @@
 namespace App\Http\Controllers;
 use App\Models\Admin;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash; // Tambahkan ini untuk hash password
+use Illuminate\Support\Facades\Hash; 
 use Intervention\Image\Facades\Image;
 class DataUser extends Controller
 {
     public function index(Request $request)
     {
-        // Simpan URL terakhir ke session sebelum mengunjungi halaman index
-        session(['previous_url' => url()->full()]);
 
         // Ambil query pencarian
         $search = $request->input('search');
@@ -92,7 +90,7 @@ class DataUser extends Controller
 
             // Menggunakan Intervention Image untuk resize dan crop gambar
             $image = Image::make($file); // Membuka file gambar
-            $image->fit(300, 300, function ($constraint) {
+            $image->fit(1080, 1080, function ($constraint) {
                 $constraint->upsize(); // Mencegah gambar diperbesar
             });
 

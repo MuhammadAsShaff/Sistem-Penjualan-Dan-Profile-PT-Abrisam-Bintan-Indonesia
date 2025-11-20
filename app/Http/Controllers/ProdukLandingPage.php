@@ -11,13 +11,14 @@ class ProdukLandingPage extends Controller
     public function index(Request $request)
     {
         $kategori = Kategori::all(); // Ambil semua kategori
-        $paket = Paket::with('produk')->get(); // Ambil semua paket beserta produk terkait
+        $paket = Paket::with('produk')->get(); 
 
         // Ambil kecepatan unik dari produk untuk digunakan di filter
         $kecepatanProduk = Produk::select('kecepatan')->distinct()->get();
         $kuota = Produk::select('kuota')->distinct()->get();
 
-        return view('produk.layoutProduk', compact('paket', 'kategori', 'kecepatanProduk','kuota'));
+        return view('produk.layoutProduk', compact('paket',
+         'kategori', 'kecepatanProduk','kuota'));
     }
 
 

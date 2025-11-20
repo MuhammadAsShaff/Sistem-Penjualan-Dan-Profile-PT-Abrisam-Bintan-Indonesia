@@ -26,7 +26,6 @@ class Customer extends Model
     ];
 
     public $incrementing = true;
-    // Timestamps are enabled by default, no need to specify
 
     // Relasi ke produk
     public function berlangganan()

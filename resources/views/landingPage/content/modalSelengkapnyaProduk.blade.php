@@ -41,18 +41,19 @@
                 <h2 class="text-lg font-bold text-red-600 mb-3">Syarat dan Ketentuan</h2>
 
                 @php
-                    $syaratKetentuan = is_string($item->syarat_ketentuan) ? json_decode($item->syarat_ketentuan, true) : $item->syarat_ketentuan;
+                    $syaratKetentuan = json_decode($item->syarat_ketentuan, true);
                 @endphp
-
-                @if (isset($syaratKetentuan) && is_array($syaratKetentuan) && count($syaratKetentuan) > 0)
+                
+                @if (is_array($syaratKetentuan) && count($syaratKetentuan) > 0)
                     <ul class="list-decimal list-inside space-y-2 text-gray-700">
                         @foreach ($syaratKetentuan as $syarat)
-                            <li class="pl-2">{{ $syarat }}</li>
+                            <li>{{ $syarat }}</li>
                         @endforeach
                     </ul>
                 @else
                     <p class="text-gray-500 text-center">Tidak ada syarat dan ketentuan yang tersedia.</p>
                 @endif
+
             </div>
         </div>
     </div>

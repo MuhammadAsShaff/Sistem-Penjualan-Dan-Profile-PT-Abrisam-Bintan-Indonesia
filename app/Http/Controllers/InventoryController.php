@@ -285,7 +285,6 @@ class InventoryController extends Controller
     }
 
 
-
     public function pindahkanProdukMassal(Request $request)
     {
         $ids = $request->input('ids');

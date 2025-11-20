@@ -111,6 +111,7 @@
                 <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">{{ $produk->kecepatan }} Mbps</td>
                 <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
                   {{ is_array(json_decode($produk->benefit)) && count(json_decode($produk->benefit)) > 0 ? implode(', ', json_decode($produk->benefit)) : 'Tidak ada benefit' }}
+     
                 </td>
                 </td>
 

@@ -17,7 +17,8 @@ class InventoryExport implements WithMultipleSheets
     public function sheets(): array
     {
         // Ambil kategori produk unik dari tabel stock
-        $categories = Stock::select('kategoriProduk')->distinct()->pluck('kategoriProduk');
+        $categories = Stock::select('kategoriProduk')->distinct()
+        ->pluck('kategoriProduk');
 
         $sheets = [];
         foreach ($categories as $category) {

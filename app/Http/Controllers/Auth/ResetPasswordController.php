@@ -37,12 +37,9 @@ class ResetPasswordController extends Controller
             'created_at' => now(),
         ]);
 
-        try {
-            $this->sendEmailWithBrevoApi($email, $token);
-            return back()->with('status', 'Link reset password telah dikirim ke email Anda.');
-        } catch (\Exception $e) {
-            return back()->withErrors(['email_admin' => 'Gagal mengirim email reset password.']);
-        }
+        $this->sendEmailWithBrevoApi($email, $token);
+
+        return back()->with('status', 'Link reset password telah dikirim ke email Anda.');
     }
 
     private function sendEmailWithBrevoApi($to, $token)
@@ -89,7 +86,8 @@ class ResetPasswordController extends Controller
         $resetToken = DB::table('password_reset_tokens')->where('token', $token)->first();
 
         if (!$resetToken) {
-            return redirect()->route('password.request')->withErrors(['token' => 'Link reset password tidak valid atau sudah pernah digunakan.']);
+            return redirect()->route('password.request')->withErrors(['token' => 'Link reset password
+             tidak valid atau sudah pernah digunakan.']);
         }
 
         return view('auth.reset-password', ['token' => $token]);
@@ -103,10 +101,12 @@ class ResetPasswordController extends Controller
             'password' => 'required|confirmed|min:8',
         ]);
 
-        $resetToken = DB::table('password_reset_tokens')->where('email', $request->email_admin)->where('token', $request->token)->first();
+        $resetToken = DB::table('password_reset_tokens')
+        ->where('email', $request->email_admin)->where('token', $request->token)->first();
 
         if (!$resetToken) {
-            return back()->withErrors(['token' => 'Link reset password tidak valid atau sudah pernah digunakan.']);
+            return back()->withErrors(['token' => 'Link reset password tidak 
+            valid atau sudah pernah digunakan.']);
         }
 
         $admin = Admin::where('email_admin', $request->email_admin)->first();
