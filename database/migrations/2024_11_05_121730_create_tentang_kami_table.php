@@ -17,6 +17,7 @@ class CreateTentangKamiTable extends Migration
             $table->text('deskripsi_perusahaan');
             $table->text('visi');
             $table->text('misi');
+            $table->string('fotoPerusahaan',255);
             $table->timestamps();
         });
     }

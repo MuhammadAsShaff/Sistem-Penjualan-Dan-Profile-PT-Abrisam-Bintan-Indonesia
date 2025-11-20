@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('inventory_keluar', function (Blueprint $table) {
             $table->id('id_inventoryKeluar');
-            $table->string('kategoriProduk')->unique();
+            $table->string('kategoriProduk',255)->unique();
             $table->timestamps();
         });
     }

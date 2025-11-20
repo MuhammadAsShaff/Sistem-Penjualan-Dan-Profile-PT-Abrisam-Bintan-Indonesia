@@ -15,9 +15,9 @@ class CreateKegiatanTable extends Migration
     {
         Schema::create('kegiatan', function (Blueprint $table) {
             $table->id();
-            $table->string('nama'); // Nama kegiatan
-            $table->text('keterangan')->nullable(); // Keterangan kegiatan, nullable jika tidak selalu ada
-            $table->string('gambar'); // Path gambar kegiatan yang diupload
+            $table->string('nama',255); 
+            $table->text('keterangan')->nullable(); 
+            $table->string('gambar',255); 
             $table->timestamps();
         });
     }

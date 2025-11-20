@@ -14,14 +14,14 @@ class CreateBlogTable extends Migration
     public function up()
     {
         Schema::create('blog', function (Blueprint $table) {
-            $table->id('id_blog'); // Primary key
-            $table->string('judul_blog'); // Judul blog
-            $table->string('slug'); // Judul blog
-            $table->mediumText('isi_blog'); // Isi blog
+            $table->id('id_blog'); 
+            $table->string('judul_blog',255); 
+            $table->string('slug',255); 
+            $table->mediumText('isi_blog'); 
             $table->string('kategori', 100);
-            $table->string('gambar_cover')->nullable(); // Gambar cover (optional)
-            $table->timestamp('tanggal_penulisan')->useCurrent(); // Tanggal penulisan
-            $table->timestamps(); // Created_at and Updated_at
+            $table->string('gambar_cover',255)->nullable(); 
+            $table->timestamp('tanggal_penulisan')->useCurrent(); 
+            $table->timestamps(); 
         });
     }
 

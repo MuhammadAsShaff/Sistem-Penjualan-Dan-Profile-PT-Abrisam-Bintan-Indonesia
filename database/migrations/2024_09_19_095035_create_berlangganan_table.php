@@ -17,7 +17,7 @@ class CreateBerlanggananTable extends Migration
             $table->id();
             $table->unsignedBigInteger('id_customer');
             $table->unsignedBigInteger('id_produk');
-            $table->date('tanggal_berlangganan'); // Kolom untuk menyimpan tanggal berlangganan
+            $table->date('tanggal_berlangganan'); 
             $table->timestamps();
 
             // Foreign keys

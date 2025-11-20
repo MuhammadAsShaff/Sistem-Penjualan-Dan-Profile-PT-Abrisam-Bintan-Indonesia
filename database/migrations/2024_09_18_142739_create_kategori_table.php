@@ -15,10 +15,10 @@ class CreateKategoriTable extends Migration
     {
         Schema::create('kategori', function (Blueprint $table) {
             $table->id('id_kategori');
-            $table->string('nama_kategori');
-            $table->string('deskripsi');
-            $table->string('gambar_kategori')->nullable(); // Kolom gambar kategori, bisa null jika tidak ada gambar
-            $table->json('syarat_ketentuan')->nullable(); // Kolom syarat_ketentuan sebagai JSON, bisa null
+            $table->string('nama_kategori', 255);
+            $table->string('gambar_kategori', 255)->nullable();
+            $table->longText('syarat_ketentuan');
+            $table->text('deskripsi')->nullable();
             $table->timestamps();
         });
     }

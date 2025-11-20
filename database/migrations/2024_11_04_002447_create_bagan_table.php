@@ -10,9 +10,9 @@ class CreateBaganTable extends Migration
     {
         Schema::create('bagan', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('title');
-            $table->string('img_url')->nullable();
+            $table->string('name',100);
+            $table->string('title', 100);
+            $table->string('img_url', 255)->nullable();
             $table->foreignId('parent_id')->nullable()->constrained('bagan')->onDelete('cascade');
             $table->timestamps();
         });

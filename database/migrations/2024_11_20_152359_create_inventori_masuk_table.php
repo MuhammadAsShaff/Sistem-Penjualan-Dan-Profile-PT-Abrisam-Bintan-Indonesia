@@ -11,9 +11,9 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('inventory_masuk', function (Blueprint $table) {
-            $table->id('id_inventoryMasuk'); // Primary key
-            $table->string('kategoriProduk')->unique(); // Kategori produk unik
-            $table->timestamps(); // created_at dan updated_at
+            $table->id('id_inventoryMasuk'); 
+            $table->string('kategoriProduk',255)->unique();
+            $table->timestamps();
         });
     }
 
@@ -22,6 +22,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('inventory_masuk'); // Hapus tabel jika rollback
+        Schema::dropIfExists('inventory_masuk'); 
     }
 };

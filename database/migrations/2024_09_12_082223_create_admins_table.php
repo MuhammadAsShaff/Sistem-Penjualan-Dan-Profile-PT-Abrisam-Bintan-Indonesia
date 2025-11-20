@@ -14,8 +14,8 @@ class CreateAdminsTable extends Migration
     public function up()
     {
         Schema::create('admins', function (Blueprint $table) {
-            $table->id(); 
-            $table->string('email_admin', 100)->unique(); 
+            $table->id();
+            $table->string('email_admin', 100)->unique();
             $table->string('nama_admin', 100);
             $table->string('password', 100);
             $table->string('posisi', 100);

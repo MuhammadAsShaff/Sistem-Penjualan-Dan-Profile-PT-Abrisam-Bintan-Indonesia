@@ -14,27 +14,25 @@ class CreateProdukTable extends Migration
     public function up()
     {
         Schema::create('produk', function (Blueprint $table) {
-            $table->id('id_produk'); // Primary key
+            $table->id('id_produk'); 
+            $table->string('nama_produk', 255); 
+            $table->integer('harga_produk'); 
+            $table->integer('kuota')->nullable(); 
+            $table->integer('biaya_pasang')->nullable(); 
+            $table->longText('benefit')->nullable(); 
+            $table->integer('kecepatan'); 
+            $table->text('deskripsi'); 
+            $table->integer('diskon')->nullable(); 
 
-            // Kolom sesuai dengan model
-            $table->string('nama_produk'); // Nama produk
-            $table->integer('harga_produk'); // Harga produk
-            $table->json('benefit'); // Benefit produk
-            $table->integer('kecepatan'); // Kecepatan internet
-            $table->text('deskripsi'); // Deskripsi produk
-            $table->integer('diskon')->nullable(); // Diskon produk
-            $table->integer('biaya_pasang')->nullable(); // Biaya pemasangan
-            $table->integer('kuota')->nullable(); // Kuota, mungkin bergantung pada tipe produk
-
-            // Foreign key ke kategori
-            $table->unsignedBigInteger('id_kategori');
+            // Foreign Key ke kategori
+            $table->unsignedBigInteger('id_kategori'); 
             $table->foreign('id_kategori')->references('id_kategori')->on('kategori')->onDelete('cascade');
 
-            // Foreign key ke paket
-            $table->unsignedBigInteger('id_paket');
+            // Foreign Key ke paket
+            $table->unsignedBigInteger('id_paket'); 
             $table->foreign('id_paket')->references('id_paket')->on('paket')->onDelete('cascade');
 
-            $table->timestamps(); // Timestamps for created_at and updated_at
+            $table->timestamps();
         });
     }
 

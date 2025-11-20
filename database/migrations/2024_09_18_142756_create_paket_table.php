@@ -15,8 +15,8 @@ class CreatePaketTable extends Migration
     {
         Schema::create('paket', function (Blueprint $table) {
             $table->id('id_paket');
-            $table->string('nama_paket');
-            $table->string('deskripsi'); // Deskripsi
+            $table->string('nama_paket',255);
+            $table->text('deskripsi'); 
             $table->timestamps();
         });
     }

@@ -14,11 +14,11 @@ class CreatePromoTable extends Migration
     public function up()
     {
         Schema::create('promo', function (Blueprint $table) {
-            $table->id('id_promo'); // Primary Key
-            $table->string('nama_promo'); // Nama promo
-            $table->string('deskripsi'); // Deskripsi
-            $table->string('gambar_promo')->nullable(); // Gambar promo, nullable jika tidak ada gambar
-            $table->timestamps(); // Timestamps untuk created_at dan updated_at
+            $table->id('id_promo'); 
+            $table->string('nama_promo',255); 
+            $table->text('deskripsi'); 
+            $table->string('gambar_promo',255)->nullable(); 
+            $table->timestamps(); 
         });
     }
 

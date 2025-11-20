@@ -14,10 +14,10 @@ class CreateFaqTable extends Migration
     public function up()
     {
         Schema::create('faq', function (Blueprint $table) {
-            $table->id('id_faq'); // Primary key 'id_faq'
-            $table->string('judul_faq'); // Kolom 'judul_faq'
-            $table->text('isi_faq'); // Kolom 'isi_faq'
-            $table->timestamps(); // Kolom created_at dan updated_at
+            $table->id('id_faq'); 
+            $table->string('judul_faq',255); 
+            $table->text('isi_faq'); 
+            $table->timestamps(); 
         });
     }
 
