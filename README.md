@@ -1,66 +1,133 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Sistem Penjualan dan Profil PT Abrisam Bintan Indonesia
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Aplikasi web ini adalah sistem informasi profil perusahaan dan penjualan produk untuk PT Abrisam Bintan Indonesia. Dibangun menggunakan framework Laravel, aplikasi ini menyediakan antarmuka publik untuk pelanggan dan dashboard admin yang komprehensif untuk pengelolaan konten, produk, dan inventaris.
 
-## About Laravel
+## 🚀 Fitur Utama
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### 🌐 Halaman Publik (Pelanggan)
+*   **Profil Perusahaan**: Halaman Tentang Kami, Struktur Organisasi, dan Kegiatan Perusahaan.
+*   **Katalog Produk**: Menampilkan produk, paket, dan promo dengan fitur filter berdasarkan kategori.
+*   **Blog & Informasi**: Artikel blog dengan fitur pencarian dan halaman FAQ.
+*   **Pemesanan Produk**: Alur pemesanan lengkap dengan verifikasi OTP, input lokasi, dan data diri pelanggan.
+*   **Kontak**: Informasi kontak perusahaan.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 🛠 Dashboard Admin
+*   **Manajemen Produk**: Kelola Produk, Kategori, Paket, dan Promo.
+*   **Manajemen Konten (CMS)**: Kelola Blog, FAQ, dan informasi Tentang Kami (Struktur Organisasi, Kegiatan).
+*   **Manajemen Inventaris**:
+    *   Pencatatan barang masuk dan keluar.
+    *   Manajemen stok.
+    *   Ekspor laporan inventaris ke Excel.
+*   **Manajemen Pelanggan**: Lihat data pelanggan dan ekspor ke Excel.
+*   **Manajemen Pengguna**: Kelola akun admin.
+*   **Autentikasi**: Login aman dan fitur reset password.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 💻 Teknologi yang Digunakan
 
-## Learning Laravel
+*   **Backend**: [Laravel 11](https://laravel.com) (PHP 8.2+)
+*   **Frontend**:
+    *   [Tailwind CSS](https://tailwindcss.com)
+    *   [Flowbite](https://flowbite.com)
+    *   Blade Templates
+*   **Database**: MySQL
+*   **Tools & Library**:
+    *   [Vite](https://vitejs.dev) (Asset bundling)
+    *   `maatwebsite/excel` (Ekspor Excel)
+    *   `intervention/image` (Manipulasi Gambar)
+    *   `ckeditor5` (Text Editor)
+    *   `orgchart.js` (Visualisasi Struktur Organisasi)
+    *   `getbrevo/brevo-php` & `phpmailer` (Layanan Email)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 📋 Prasyarat Sistem
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Sebelum memulai, pastikan sistem Anda memiliki:
+*   PHP >= 8.2
+*   Composer
+*   Node.js & NPM
+*   MySQL Database
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## ⚙️ Instalasi
 
-## Laravel Sponsors
+Ikuti langkah-langkah berikut untuk menjalankan proyek di komputer lokal Anda:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+1.  **Clone Repositori**
+    ```bash
+    git clone https://github.com/username/repo-name.git
+    cd nama-folder-project
+    ```
 
-### Premium Partners
+2.  **Instal Dependensi PHP**
+    ```bash
+    composer install
+    ```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+3.  **Instal Dependensi JavaScript**
+    ```bash
+    npm install
+    ```
 
-## Contributing
+4.  **Konfigurasi Environment**
+    Salin file `.env.example` menjadi `.env`:
+    ```bash
+    cp .env.example .env
+    ```
+    Buka file `.env` dan sesuaikan konfigurasi database Anda:
+    ```env
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=nama_database_anda
+    DB_USERNAME=root
+    DB_PASSWORD=
+    ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+5.  **Generate Application Key**
+    ```bash
+    php artisan key:generate
+    ```
 
-## Code of Conduct
+6.  **Migrasi Database**
+    Jalankan migrasi untuk membuat tabel-tabel yang diperlukan:
+    ```bash
+    php artisan migrate
+    ```
+    *(Opsional) Jika ada seeder:*
+    ```bash
+    php artisan db:seed
+    ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+7.  **Jalankan Build Assets**
+    Untuk pengembangan (hot-reload):
+    ```bash
+    npm run dev
+    ```
+    Untuk produksi:
+    ```bash
+    npm run build
+    ```
 
-## Security Vulnerabilities
+8.  **Jalankan Server Lokal**
+    Buka terminal baru dan jalankan:
+    ```bash
+    php artisan serve
+    ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Akses aplikasi melalui browser di `http://localhost:8000`.
 
-## License
+## 📂 Struktur Folder
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+*   `app/`: Logika inti aplikasi (Controllers, Models, dll).
+*   `resources/views/`: Tampilan antarmuka (Blade templates).
+*   `routes/`: Definisi rute URL (web.php).
+*   `database/migrations/`: Skema database.
+*   `public/`: Aset publik (gambar, file build).
+
+## 🔐 Akun Default (Jika Ada)
+
+Jika Anda telah menjalankan seeder, gunakan akun berikut untuk login ke dashboard admin:
+*   **URL**: `/admin/login`
+*   **Email**: (Sesuaikan dengan seeder)
+*   **Password**: (Sesuaikan dengan seeder)
+
+---
+Dibuat dengan ❤️ oleh Tim Pengembang.
